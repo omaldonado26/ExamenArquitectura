@@ -1,0 +1,22 @@
+# Entorno virtual
+venv/
+
+# Base de datos SQLite
+db.sqlite3
+
+# Cachés de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de log
+*.log
+
+# Archivos de entorno (VSCode, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db

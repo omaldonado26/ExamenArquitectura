@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Monitoreo de Sistema</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; }
+    .card { border:1px solid #ccc; border-radius:8px; padding:1rem; }
+    button { margin-top:1rem; padding:0.5rem 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Estado del Sistema</h1>
+  <div class="cards">
+    <div class="card">
+      <h2>CPU</h2>
+      <p>Uso: {{ cpu }} %</p>
+    </div>
+    <div class="card">
+      <h2>Memoria RAM</h2>
+      {% if memory.error %}
+        <p style="color:red;">{{ memory.error }}</p>
+      {% else %}
+        <p>Total: {{ memory.total_gb }} GB</p>
+        <p>Usado: {{ memory.used_gb }} GB ({{ memory.percent }} %)</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Disco</h2>
+      {% if disk.error %}
+        <p style="color:red;">{{ disk.error }}</p>
+      {% else %}
+        <p>Total: {{ disk.total_gb }} GB</p>
+        <p>Libre: {{ disk.free_gb }} GB</p>
+        <p>Usado: {{ disk.percent }} %</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Sistema</h2>
+      {% if system.error %}
+        <p style="color:red;">{{ system.error }}</p>
+      {% else %}
+        <p>OS: {{ system.os }}</p>
+        <p>Núcleos físicos: {{ system.cores_physical }}</p>
+        <p>Núcleos lógicos: {{ system.cores_logical }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Botón de actualización manual -->
+  <form method="get">
+    <button type="submit">Actualizar</button>
+  </form>
+
+  <!-- Recarga automática cada 10 segundos -->
+  <script>
+    setTimeout(() => window.location.reload(), 10000);
+  </script>
+</body>
+</html>
