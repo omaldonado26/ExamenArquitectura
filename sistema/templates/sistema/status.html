@@ -3,91 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Monitoreo de Sistema</title>
+    <link rel="stylesheet" href="styles.css">
   <style>
-    :root {
-      --bg-color: #f4f7fa;
-      --card-bg: #ffffff;
-      --primary: #4a90e2;
-      --accent: #50e3c2;
-      --text: #333;
-      --shadow: rgba(0, 0, 0, 0.1);
-      --radius: 10px;
-      --transition: 0.3s ease;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: var(--bg-color);
-      color: var(--text);
-      padding: 2rem;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-size: 2.5rem;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: transform var(--transition), box-shadow var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px var(--shadow);
-    }
-    .card h2 {
-      margin-bottom: 1rem;
-      font-size: 1.25rem;
-      color: var(--primary);
-    }
-    .card p {
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #e0e0e0;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 0.75rem;
-    }
-    .progress {
-      height: 100%;
-      background: var(--accent);
-      transition: width var(--transition);
-    }
-    form {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius);
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: background var(--transition), transform var(--transition);
-    }
-    button:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
-    }
+    body { font-family: sans-serif; padding: 2rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; }
+    .card { border:1px solid #ccc; border-radius:8px; padding:1rem; }
+    button { margin-top:1rem; padding:0.5rem 1rem; }
   </style>
 </head>
 <body>
@@ -96,9 +17,6 @@
     <div class="card">
       <h2>CPU</h2>
       <p>Uso: {{ cpu }} %</p>
-      <div class="progress-bar">
-        <div class="progress" style="width: {{ cpu }}%;"></div>
-      </div>
     </div>
     <div class="card">
       <h2>Memoria RAM</h2>
@@ -107,9 +25,6 @@
       {% else %}
         <p>Total: {{ memory.total_gb }} GB</p>
         <p>Usado: {{ memory.used_gb }} GB ({{ memory.percent }} %)</p>
-        <div class="progress-bar">
-          <div class="progress" style="width: {{ memory.percent }}%;"></div>
-        </div>
       {% endif %}
     </div>
     <div class="card">
@@ -120,9 +35,6 @@
         <p>Total: {{ disk.total_gb }} GB</p>
         <p>Libre: {{ disk.free_gb }} GB</p>
         <p>Usado: {{ disk.percent }} %</p>
-        <div class="progress-bar">
-          <div class="progress" style="width: {{ disk.percent }}%;"></div>
-        </div>
       {% endif %}
     </div>
     <div class="card">
@@ -142,7 +54,6 @@
   </form>
 
   <script>
-    // Auto-refresca cada 5 segundos
     setTimeout(() => window.location.reload(), 5000);
   </script>
 </body>
