@@ -9,7 +9,7 @@ Aplicación web que muestra en tiempo real datos de CPU, memoria RAM, disco y si
 - Uso de disco (GB libre, usado, total y %).
 - Información del sistema operativo y núcleos físicos/lógicos.
 - Actualización manual (botón “Actualizar”).
-- Recarga automática cada 10 segundos (configurable en la plantilla).
+- Recarga automática cada 5 segundos (configurable en la plantilla).
 
 ## Requisitos
 - Python 3.8+
@@ -20,5 +20,5 @@ Aplicación web que muestra en tiempo real datos de CPU, memoria RAM, disco y si
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/monitor.git
+   git clone 
    cd monitor
